@@ -1,0 +1,15 @@
+<div class="col-xs-12">
+    <h2>Mes appreils</h2>
+    <p>Mise à jour : {{ lastUpdate | async | date:'medium'}}</p>
+    <ul class="list-group">
+        <app-appreil *ngFor="let appreil of appreils; let i = index"
+        [indexOfAppreil]="i"
+        [appreilName]="appreil.name"
+        [appreilStatus]="appreil.status"></app-appreil>
+    </ul>
+    <button class="btn btn-success" 
+    [disabled]="!isAuth" 
+    (click)="onAllumer()">Tout allumer</button>
+    <button class="btn btn-danger"
+    (click)="onEteindre()">Tout éteindre</button>
+</div>
