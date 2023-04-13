@@ -11,6 +11,7 @@ export class AppreilComponent implements OnInit{
   @Input() appreilName: string;
   @Input() appreilStatus: String;
   @Input() indexOfAppreil: number;
+  @Input() id: number;
 
   constructor(private appreilService: AppreilService){}
 

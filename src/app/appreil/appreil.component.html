@@ -3,6 +3,7 @@
     style="width: 20px;height: 20px;background-color: red;"
     *ngIf="getStatus() ==='éteint'"></div> -->
     <h4 [ngStyle]="{color: getColor()}">Appreil {{ appreilName }} -- Statu : {{ getStatus() }}</h4>
+    <a [routerLink]="[id]">Détail</a>
     <button class="btn btn-sucess" (click)="onSwitchOn()" [disabled]="appreilStatus === 'allumé'">Allumer</button>
     <button class="btn btn danger" (click)="onSwitchOff()" [disabled]="appreilStatus ==='éteint'">Eteindre</button>    
     <!--<input type="text" class="form-control" [(ngModel)]="appreilName">-->

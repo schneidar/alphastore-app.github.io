@@ -5,11 +5,20 @@
         <app-appreil *ngFor="let appreil of appreils; let i = index"
         [indexOfAppreil]="i"
         [appreilName]="appreil.name"
-        [appreilStatus]="appreil.status"></app-appreil>
+        [appreilStatus]="appreil.status"
+        [id]="appreil.id"></app-appreil>
     </ul>
-    <button class="btn btn-success" 
+    <div class="btn-toolbar">
+        <button class="btn btn-success" 
     [disabled]="!isAuth" 
     (click)="onAllumer()">Tout allumer</button>
     <button class="btn btn-danger"
     (click)="onEteindre()">Tout éteindre</button>
+    <button class="btn btn-sucess" 
+    (click)="onSave()">Enregistrer</button>
+    <button class="btn btn-primary"
+    (click)="onFetch()">charger</button>
+    </div>
+
+    
 </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { AppreilService } from '../services/appreil.service';
 @Component({
   selector: 'app-appreil-view',
@@ -6,6 +7,7 @@ import { AppreilService } from '../services/appreil.service';
   styleUrls: ['./appreil-view.component.scss']
 })
 export class AppreilViewComponent implements OnInit{
+  
   isAuth = false;
   appreils: any[];
   latest_date : string;
@@ -22,7 +24,7 @@ export class AppreilViewComponent implements OnInit{
     }
   )
 
-  
+  appareilSubscription: Subscription;
   constructor(private appreilService: AppreilService){
     setTimeout(
        () => {
@@ -32,7 +34,13 @@ export class AppreilViewComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.appreils = this.appreilService.appreilss;
+    //this.appreils = this.appreilService.appreilss;
+    this.appareilSubscription = this.appreilService.appreilSubject.subscribe(
+      (appreils: any[]) => {
+        this.appreils = appreils;
+      }
+    );
+    this.appreilService.emitAppreilSubject();
   }
   onAllumer(){
     this.appreilService.switchOnAll();
@@ -42,4 +50,11 @@ export class AppreilViewComponent implements OnInit{
     this.appreilService.switchOffAll();
   }
   
+  onSave(){
+    this.appreilService.saveAppreilsToServer();
+  }
+
+  onFetch() {
+    this.appreilService.getAppreilsFromServer();
+  }
 }

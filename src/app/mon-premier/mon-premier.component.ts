@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { DatePipe } from '@angular/common';
-import { AppreilService } from '../services/appreil.service';
 
 @Component({
   selector: 'app-mon-premier',
